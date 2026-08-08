@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kejutan Buat Kamu 💌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pink: #ff6fa5;
+        --pink-deep: #ff4f91;
+        --lavender: #e6d8ff;
+        --mint: #6fe7c4;
+        --sun: #ffd469;
+        --ink: #4a3f6b;
+        --cream: #fff9fb;
+        --bg1: #ffe5ec;
+        --bg2: #e8d9ff;
+        --shadow: rgba(74, 63, 107, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Quicksand", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(
+          180deg,
+          var(--bg1) 0%,
+          var(--bg2) 45%,
+          #fdf2ff 100%
+        );
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      h1,
+      h2,
+      h3,
+      .display {
+        font-family: "Baloo 2", cursive;
+        margin: 0;
+      }
+
+      /* ---------- Floating hearts background ---------- */
+      #heart-layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .float-heart {
+        position: absolute;
+        bottom: -10%;
+        font-size: 22px;
+        opacity: 0.55;
+        animation: floatUp linear forwards;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.05));
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-115vh) translateX(var(--drift, 20px))
+            rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      section {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 90px 24px;
+      }
+
+      /* ---------- Landing ---------- */
+      #landing {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      #landing.hide {
+        opacity: 0;
+        transform: scale(0.96);
+        pointer-events: none;
+      }
+      .badge {
+        background: var(--cream);
+        color: var(--pink-deep);
+        font-weight: 700;
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        box-shadow: 0 6px 16px var(--shadow);
+        margin-bottom: 22px;
+        display: inline-block;
+      }
+      #landing h1 {
+        font-size: clamp(32px, 7vw, 56px);
+        color: var(--ink);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      #landing h1 span {
+        color: var(--pink-deep);
+      }
+      #landing p {
+        font-size: 18px;
+        max-width: 480px;
+        margin: 0 auto 34px;
+        color: #6b5f8e;
+      }
+
+      .btn {
+        font-family: "Baloo 2", cursive;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--pink) 0%,
+          var(--pink-deep) 100%
+        );
+        border: none;
+        padding: 16px 34px;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(255, 79, 145, 0.35);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .btn:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 14px 28px rgba(255, 79, 145, 0.45);
+      }
+      .btn:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .btn:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 3px;
+      }
+      .btn.secondary {
+        background: white;
+        color: var(--pink-deep);
+        border: 2px solid var(--pink);
+        box-shadow: 0 8px 18px var(--shadow);
+      }
+
+      .bounce {
+        animation: bounce 2.4s ease-in-out infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* ---------- Shared section styling ---------- */
+      .eyebrow {
+        display: inline-block;
+        font-weight: 700;
+        color: var(--pink-deep);
+        background: rgba(255, 111, 165, 0.12);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      .sec-title {
+        font-size: clamp(26px, 4.5vw, 36px);
+        margin-bottom: 10px;
+      }
+      .sec-sub {
+        color: #6b5f8e;
+        font-size: 16px;
+        margin-bottom: 36px;
+        max-width: 520px;
+      }
+      .center {
+        text-align: center;
+      }
+      .center .sec-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ---------- Reason jar ---------- */
+      #reason-card {
+        background: var(--cream);
+        border-radius: 28px;
+        padding: 40px 32px;
+        text-align: center;
+        box-shadow: 0 16px 40px var(--shadow);
+        border: 2px dashed var(--pink);
+        position: relative;
+      }
+      #reason-emoji {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 14px;
+      }
+      #reason-text {
+        font-family: "Baloo 2", cursive;
+        font-size: 22px;
+        color: var(--ink);
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .counter {
+        margin-top: 18px;
+        font-size: 13px;
+        color: #9b8fc0;
+      }
+
+      /* ---------- Flip cards ---------- */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 560px) {
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .flip-card {
+        perspective: 1200px;
+        height: 190px;
+        cursor: pointer;
+      }
+      .flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      .flip-card.flipped .flip-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 18px;
+        backface-visibility: hidden;
+        box-shadow: 0 10px 26px var(--shadow);
+      }
+      .flip-front {
+        background: linear-gradient(150deg, var(--lavender), #fbe4ff);
+      }
+      .flip-front .num {
+        font-family: "Baloo 2", cursive;
+        font-size: 34px;
+        color: var(--pink-deep);
+      }
+      .flip-front .hint {
+        font-size: 13px;
+        color: #7c6ea3;
+        margin-top: 6px;
+      }
+      .flip-back {
+        background: linear-gradient(150deg, var(--pink), var(--pink-deep));
+        color: white;
+        transform: rotateY(180deg);
+        font-family: "Baloo 2", cursive;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      /* ---------- Mood picker ---------- */
+      .mood-row {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 26px;
+      }
+      .mood-btn {
+        font-size: 30px;
+        background: var(--cream);
+        border: 2px solid transparent;
+        border-radius: 20px;
+        padding: 14px 18px;
+        cursor: pointer;
+        box-shadow: 0 8px 18px var(--shadow);
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .mood-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        border-color: var(--pink);
+      }
+      .mood-btn:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 2px;
+      }
+      #mood-reply {
+        background: var(--cream);
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+        font-family: "Baloo 2", cursive;
+        font-size: 18px;
+        box-shadow: 0 10px 24px var(--shadow);
+        min-height: 32px;
+      }
+
+      /* ---------- Finale ---------- */
+      #finale {
+        text-align: center;
+      }
+      #finale .letter {
+        background: var(--cream);
+        border-radius: 28px;
+        padding: 42px 34px;
+        box-shadow: 0 20px 50px var(--shadow);
+        text-align: left;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #584c78;
+        position: relative;
+      }
+      #finale .letter::before {
+        content: "💌";
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 36px;
+        background: var(--cream);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 14px var(--shadow);
+      }
+      #finale .signoff {
+        margin-top: 18px;
+        font-family: "Baloo 2", cursive;
+        color: var(--pink-deep);
+        font-size: 19px;
+      }
+      #hug-btn-wrap {
+        margin-top: 36px;
+      }
+      #hug-msg {
+        margin-top: 16px;
+        font-family: "Baloo 2", cursive;
+        color: var(--pink-deep);
+        font-size: 18px;
+        min-height: 24px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px 50px;
+        font-size: 13px;
+        color: #a397c4;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ---------- Confetti ---------- */
+      .confetti {
+        position: fixed;
+        top: -10px;
+        z-index: 50;
+        border-radius: 2px;
+        pointer-events: none;
+        animation: confettiFall linear forwards;
+      }
+      @keyframes confettiFall {
+        to {
+          transform: translateY(105vh) rotate(540deg);
+          opacity: 0.9;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .float-heart,
+        .bounce,
+        .confetti {
+          animation: none !important;
+          display: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+        .btn:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heart-layer"></div>
+
+    <!-- LANDING -->
+    <div id="landing">
+      <span class="badge">buat: LINDA PUTRI NUR WIDYANINGRUM 💗</span>
+      <h1>Eh, tunggu dulu...<br />ada <span>kejutan </span> nih sayangg👀</h1>
+      <p>Ngga penting sih tapi pengen aja buat ini untuk kamu. Siap?</p>
+      <button class="btn bounce" id="open-btn">Buka kejutannya! 🎁</button>
+    </div>
+
+    <!-- REASON JAR -->
+    <section id="reasons" class="center">
+      <span class="eyebrow">TOPLES ALASAN</span>
+      <h2 class="sec-title">Kenapa aku sayang kamu?</h2>
+      <p class="sec-sub" style="margin-left: auto; margin-right: auto">
+        Ada banyak alasan, tapi otakku random. Kocok toplesnya, biar keluar
+        satu-satu 🫙
+      </p>
+
+      <div id="reason-card">
+        <span id="reason-emoji">🫙</span>
+        <div id="reason-text">
+          Klik tombol di bawah buat kocok toples alasan~
+        </div>
+        <button class="btn" id="shuffle-btn" style="margin-top: 20px">
+          Kocok toplesnya 🎲
+        </button>
+        <div class="counter" id="reason-counter"></div>
+      </div>
+    </section>
+
+    <!-- FLIP CARDS -->
+    <section id="UNIKKK">
+      <div class="center">
+        <span class="eyebrow">HAL ANEH</span>
+        <h2 class="sec-title">4 hal aneh nih cill</h2>
+        <p class="sec-sub" style="margin-left: auto; margin-right: auto">
+          Klik kartunya buat buka satu-satu ya cill. Jangan diintip semua
+          sekaligus, nikmatin pelan-pelan 😌
+        </p>
+      </div>
+      <div class="card-grid" id="card-grid"></div>
+    </section>
+
+    <!-- MOOD PICKER -->
+    <section id="mood" class="center">
+      <span class="eyebrow">CEK MOOD</span>
+      <h2 class="sec-title">Lagi ngerasa apa sekarang?</h2>
+      <p class="sec-sub" style="margin-left: auto; margin-right: auto">
+        Pilih satu, nanti aku "bacotin" dikit 😄
+      </p>
+      <div class="mood-row" id="mood-row"></div>
+      <div id="mood-reply">— pilih emoji di atas —</div>
+    </section>
+
+    <!-- FINALE -->
+    <section id="finale">
+      <span class="eyebrow">PENUTUP</span>
+      <h2 class="sec-title" style="margin-bottom: 26px">
+        Buat kamu, yang lagi baca ini
+      </h2>
+      <div class="letter">
+        Hai. Iya, kamu. Yang lagi merhatiin layar ini sambil mungkin mikir "ini
+        si dia lagi ngapain sih bikin beginian".
+        <br /><br />
+        Nggak ada alasan spesial, cuma pengen aja bikin sesuatu buat kamu biar
+        hari kamu, sesibuk atau se-random apapun, ada satu momen kecil yang
+        bikin kamu senyum.
+        <br /><br />
+        Makasih ya udah jadi orang yang bikin hal-hal biasa jadi berasa lucu dan
+        hangat. PRENKKKK
+        <br /><br />
+        NGGA SAYANG SERIUS AKU SAYANG KAMU LOVE U MORE MORE MORE, Ditunggu chat
+        balesannya 😙
+        <div class="signoff">— dari yang selalu kepikiran tentang kamu ✨</div>
+      </div>
+      <div id="hug-btn-wrap">
+        <button class="btn secondary" id="hug-btn">
+          Kirim pelukan virtual 🤗
+        </button>
+        <div id="hug-msg"></div>
+      </div>
+    </section>
+
+    <footer>dibuat dengan kesadaran penuh nih cilll 💗</footer>
+
+    <script>
+      // ---------- Floating hearts ----------
+      const heartLayer = document.getElementById("heart-layer");
+      const heartChars = ["💗", "💕", "✨", "💫", "🩷"];
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      function spawnHeart() {
+        if (reduceMotion) return;
+        const h = document.createElement("span");
+        h.className = "float-heart";
+        h.textContent =
+          heartChars[Math.floor(Math.random() * heartChars.length)];
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.setProperty("--drift", Math.random() * 80 - 40 + "px");
+        const duration = 8 + Math.random() * 6;
+        h.style.animationDuration = duration + "s";
+        h.style.fontSize = 16 + Math.random() * 16 + "px";
+        heartLayer.appendChild(h);
+        setTimeout(() => h.remove(), duration * 1000);
+      }
+      setInterval(spawnHeart, 700);
+      for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 300);
+
+      // ---------- Landing open ----------
+      document.getElementById("open-btn").addEventListener("click", () => {
+        document.getElementById("landing").classList.add("hide");
+        setTimeout(() => {
+          document
+            .getElementById("reasons")
+            .scrollIntoView({ behavior: "smooth" });
+        }, 350);
+      });
+
+      // ---------- Reason jar ----------
+      const reasons = [
+        "Karena kamu NPD LEVEL BUOSSS CILL 😆",
+        "Karena kamu tetep gemesin walau lagi mutung dikit 🙄💕",
+        "Karena kamu tu lucu banget anjai kek gaada diorang lain gitu lohh",
+        "Karena kamu inget hal-hal kecil yang aku sendiri lupa",
+        "Karena kalo sama kamu aku bisa yapping anything dan kamu selalu jawab anjir aneh betul",
+        "Karena kamu 'rumah' paling nyaman buat cerita apa aja",
+        "Karena kamu tuu dah PENDEK NGESELINN itu yang buat aku suka",
+        "Karena kamu bikin versi terbaik dari aku keluar",
+        "Karena WE MUST PURE BLOOD GEOMATIC AND GEODETIC ENGINEERING CILLL",
+        "Pokoknya karena kamu itu kamu udah titik ga koma.",
+      ];
+      const emojis = ["💗", "😆", "🥹", "😌", "✨", "🩷", "😙"];
+      let lastIndex = -1,
+        count = 0;
+      const reasonText = document.getElementById("reason-text");
+      const reasonEmoji = document.getElementById("reason-emoji");
+      const reasonCounter = document.getElementById("reason-counter");
+
+      document.getElementById("shuffle-btn").addEventListener("click", () => {
+        let idx;
+        do {
+          idx = Math.floor(Math.random() * reasons.length);
+        } while (idx === lastIndex && reasons.length > 1);
+        lastIndex = idx;
+        count++;
+        reasonText.style.opacity = 0;
+        setTimeout(() => {
+          reasonText.textContent = reasons[idx];
+          reasonEmoji.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+          reasonText.style.opacity = 1;
+        }, 150);
+        reasonCounter.textContent = `sudah dikocok ${count}x — masih ada ${reasons.length} alasan di toples`;
+      });
+      reasonText.style.transition = "opacity 0.15s ease";
+
+      // ---------- Flip cards ----------
+      const cardData = [
+        {
+          front: "01",
+          hint: "cara ngomong",
+          back: "Cara kamu ngomong 'NPD FINAL BOSS' tuh nempel banget di kepala, karena GUE EMANG NPD BOSSS😆",
+        },
+        {
+          front: "02",
+          hint: "kebiasaan kecil",
+          back: "Kebiasaan kamu yang aneh tuu lucu banget cill apalagi kalo egonya kena AWOAWKWAOKA🥹",
+        },
+        {
+          front: "03",
+          hint: "jam segini",
+          back: "Tiap jam segini biasanya kepikiran 'masi ngebo ga ya si bocil itu' ",
+        },
+        {
+          front: "04",
+          hint: "satu kata",
+          back: "Kalau disuruh gambarin kamu satu kata, jawabannya selalu: 'rumah' RILL CUY NO FEKFEK 🏡💗",
+        },
+      ];
+      const grid = document.getElementById("card-grid");
+      cardData.forEach((d) => {
+        const card = document.createElement("div");
+        card.className = "flip-card";
+        card.innerHTML = `
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <div class="num">${d.front}</div>
+          <div class="hint">klik: ${d.hint}</div>
+        </div>
+        <div class="flip-face flip-back">${d.back}</div>
+      </div>
+    `;
+        card.addEventListener("click", () => card.classList.toggle("flipped"));
+        grid.appendChild(card);
+      });
+
+      // ---------- Mood picker ----------
+      const moods = [
+        {
+          emoji: "😴",
+          reply:
+            "Ngantuk ya? Yaudah istirahat dulu gih, aku tau kamu emang KEBO AHAHAHHA 🩷",
+        },
+        {
+          emoji: "😊",
+          reply:
+            "Nah gitu dong! Seneng liat kamu senyum, kan lucuuuu apalgi kalo kirim pap ke aku😆",
+        },
+        {
+          emoji: "😩",
+          reply:
+            "Capek ya? Peluk dulu virtual, ntar kalo dah free we meet cill🤍",
+        },
+        {
+          emoji: "🥱",
+          reply:
+            "Bosen? Sini aku temenin tapi pas pulang kerja yaa dan jangan bosen sama aku aja ya cilll😅",
+        },
+        {
+          emoji: "🥰",
+          reply:
+            "BAPER KANNN MAMPUS. AHAHA BAPERAN AHAHAHHAHA EMANG LU KEGILAAN MA GW SI CILL 🫣💗",
+        },
+      ];
+      const moodRow = document.getElementById("mood-row");
+      const moodReply = document.getElementById("mood-reply");
+      moods.forEach((m) => {
+        const btn = document.createElement("button");
+        btn.className = "mood-btn";
+        btn.textContent = m.emoji;
+        btn.setAttribute("aria-label", "pilih mood " + m.emoji);
+        btn.addEventListener("click", () => {
+          moodReply.textContent = m.reply;
+        });
+        moodRow.appendChild(btn);
+      });
+
+      // ---------- Hug / confetti ----------
+      const colors = ["#ff6fa5", "#ffd469", "#6fe7c4", "#e6d8ff", "#ff4f91"];
+      function burstConfetti() {
+        const count = reduceMotion ? 0 : 60;
+        for (let i = 0; i < count; i++) {
+          const c = document.createElement("div");
+          c.className = "confetti";
+          const size = 6 + Math.random() * 6;
+          c.style.width = size + "px";
+          c.style.height = size * 0.4 + "px";
+          c.style.left = Math.random() * 100 + "vw";
+          c.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          const duration = 2.5 + Math.random() * 2;
+          c.style.animationDuration = duration + "s";
+          document.body.appendChild(c);
+          setTimeout(() => c.remove(), duration * 1000);
+        }
+      }
+      const hugMessages = [
+        "Pelukan terkirim! (Bayangin aja dulu, real-nya nyusul ya) 🤗",
+        "Ini pelukan digital paling tulus se-internet 💗",
+        "Sudah sampai kok pelukannya, dirasain nggak? kalo ada emng lu aneh si cill kan jauh ya mana kerasa 😌",
+        "Tapi kata pepatah kan cill jauh dimata dekat di hati 💗",
+      ];
+      let hugCount = 0;
+      document.getElementById("hug-btn").addEventListener("click", () => {
+        burstConfetti();
+        document.getElementById("hug-msg").textContent =
+          hugMessages[hugCount % hugMessages.length];
+        hugCount++;
+      });
+    </script>
+  </body>
+</html>
